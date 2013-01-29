@@ -13,34 +13,117 @@ public class Menu extends BO {
 	 * 
 	 */
     private static final long serialVersionUID = -558133041466368659L;
+    private List<Menu> children;
     /** 编码 */
     private String code;
+    private String description;
+    /** 显示顺序 */
+    private int displayOrder;
+    /** 是否是叶子节点 */
+    private boolean isLeaf;
+    /** URL是否是相对路径 */
+    private boolean isRelative;
+    /** 层级 */
+    private int level;
     /** 名称 */
     private String name;
-    /** 是否是叶子节点 */
-    private Boolean isLeaf;
-    /** 层级 */
-    private Integer level;
-    /** 显示顺序 */
-    private Integer displayOrder;
-    /** 状态 */
-    private Integer status;
-    /** url */
-    private String url;
-    /** 需要的权限 */
-    private String authority;
-    /** URL是否是相对路径 */
-    private Boolean isRelative;
-
     private Long parentId;
+    /** 需要的权限 */
+    private String role;
 
-    private List<Menu> children;
+    /** 状态 */
+    private int status;
+
+    /** uri */
+    private String uri;
+
+    /**
+     * @return the children
+     */
+    public List<Menu> getChildren() {
+        return children;
+    }
 
     /**
      * @return the code
      */
     public String getCode() {
         return code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @return the displayOrder
+     */
+    public int getDisplayOrder() {
+        return displayOrder;
+    }
+
+    /**
+     * @return the isLeaf
+     */
+    public boolean getIsLeaf() {
+        return isLeaf;
+    }
+
+    /**
+     * @return the isRelative
+     */
+    public boolean getIsRelative() {
+        return isRelative;
+    }
+
+    /**
+     * @return the level
+     */
+    public int getLevel() {
+        return level;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return the parentId
+     */
+    public Long getParentId() {
+        return parentId;
+    }
+
+    /**
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
+
+    /**
+     * @return the status
+     */
+    public int getStatus() {
+        return status;
+    }
+
+    /**
+     * @return the uri
+     */
+    public String getUri() {
+        return uri;
+    }
+
+    /**
+     * @param children
+     *            the children to set
+     */
+    public void setChildren(List<Menu> children) {
+        this.children = children;
     }
 
     /**
@@ -51,11 +134,40 @@ public class Menu extends BO {
         this.code = code;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     /**
-     * @return the name
+     * @param displayOrder
+     *            the displayOrder to set
      */
-    public String getName() {
-        return name;
+    public void setDisplayOrder(int displayOrder) {
+        this.displayOrder = displayOrder;
+    }
+
+    /**
+     * @param isLeaf
+     *            the isLeaf to set
+     */
+    public void setIsLeaf(boolean isLeaf) {
+        this.isLeaf = isLeaf;
+    }
+
+    /**
+     * @param isRelative
+     *            the isRelative to set
+     */
+    public void setIsRelative(boolean isRelative) {
+        this.isRelative = isRelative;
+    }
+
+    /**
+     * @param level
+     *            the level to set
+     */
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     /**
@@ -67,118 +179,6 @@ public class Menu extends BO {
     }
 
     /**
-     * @return the isLeaf
-     */
-    public Boolean getIsLeaf() {
-        return isLeaf;
-    }
-
-    /**
-     * @param isLeaf
-     *            the isLeaf to set
-     */
-    public void setIsLeaf(Boolean isLeaf) {
-        this.isLeaf = isLeaf;
-    }
-
-    /**
-     * @return the level
-     */
-    public Integer getLevel() {
-        return level;
-    }
-
-    /**
-     * @param level
-     *            the level to set
-     */
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    /**
-     * @return the displayOrder
-     */
-    public Integer getDisplayOrder() {
-        return displayOrder;
-    }
-
-    /**
-     * @param displayOrder
-     *            the displayOrder to set
-     */
-    public void setDisplayOrder(Integer displayOrder) {
-        this.displayOrder = displayOrder;
-    }
-
-    /**
-     * @return the status
-     */
-    public Integer getStatus() {
-        return status;
-    }
-
-    /**
-     * @param status
-     *            the status to set
-     */
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    /**
-     * @return the url
-     */
-    public String getUrl() {
-        return url;
-    }
-
-    /**
-     * @param url
-     *            the url to set
-     */
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    /**
-     * @return the authority
-     */
-    public String getAuthority() {
-        return authority;
-    }
-
-    /**
-     * @param authority
-     *            the authority to set
-     */
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
-
-    /**
-     * @return the isRelative
-     */
-    public Boolean getIsRelative() {
-        return isRelative;
-    }
-
-    /**
-     * @param isRelative
-     *            the isRelative to set
-     */
-    public void setIsRelative(Boolean isRelative) {
-        this.isRelative = isRelative;
-    }
-
-    /**
-     * @return the parentId
-     */
-    public Long getParentId() {
-        return parentId;
-    }
-
-    /**
      * @param parentId
      *            the parentId to set
      */
@@ -187,18 +187,27 @@ public class Menu extends BO {
     }
 
     /**
-     * @return the children
+     * @param role
+     *            the role to set
      */
-    public List<Menu> getChildren() {
-        return children;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     /**
-     * @param children
-     *            the children to set
+     * @param status
+     *            the status to set
      */
-    public void setChildren(List<Menu> children) {
-        this.children = children;
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    /**
+     * @param uri
+     *            the uri to set
+     */
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
 }
