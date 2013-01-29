@@ -1,0 +1,31 @@
+<project name="config" basedir=".">
+
+	<target name="init_clean">
+		<exec executable="cmd" failonerror="true">
+			<arg line="/k  mvn eclipse:clean" />
+		</exec>
+	</target>
+
+	<target name="init_eclipse">
+		<exec executable="cmd" failonerror="true">
+			<arg line="/k  mvn eclipse:eclipse -DdownloadSources=true" />
+		</exec>
+	</target>
+
+	<target name="init_myeclipse">
+		<exec executable="cmd" failonerror="true">
+			<arg line="/k  mvn eclipse:myeclipse -DdownloadSources=true -DuseProjectReferences=false" />
+		</exec>
+	</target>
+
+	<target name="report">
+		<exec executable="cmd" failonerror="true">
+			<arg line="/k  mvn site -X" />
+		</exec>
+	</target>
+	<target name="report_emma">
+		<exec executable="cmd" failonerror="true">
+			<arg line="/k  mvn cobertura:cobertura -X" />
+		</exec>
+	</target>
+</project>
