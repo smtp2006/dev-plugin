@@ -2,6 +2,8 @@ package org.smtp2006.biz.dao.system;
 
 import java.util.List;
 
+
+import org.smtp2006.biz.model.auth.User;
 import org.smtp2006.biz.model.system.Menu;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,19 +18,30 @@ public interface MenuDao {
      * @return
      */
     Integer create(Menu menu);
+
     /**
      * @param menu
      * @return
      */
     List<Menu> read(Menu menu);
+
     /**
      * @param menu
      * @return
      */
     Menu update(Menu menu);
+
     /**
      * @param menu
      * @return
      */
     Menu delete(Menu menu);
+
+    /**
+     * 
+     * @param user
+     * @return
+     */
+    List<Menu> getTopMenusOfUser(User user);
 }
+

@@ -23,8 +23,7 @@ public class MenuServiceImpl implements MenuService {
         if (menuServiceValidator != null) {
             menuServiceValidator.getTopMenusOfUser(user);
         }
-
-        return null;
+        return menuDao.getTopMenusOfUser(user);
     }
 
     @Override

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.smtp2006.biz.model.auth.Role;
 
+import org.smtp2006.biz.model.auth.User;
+
 public interface RoleDao {
     /**
      * @param role
@@ -28,4 +30,11 @@ public interface RoleDao {
      * @return
      */
     Role delete(Role role);
+
+    /**
+     * @param user
+     * @return
+     */
+    List<Role> listRolesOfUser(User user);
+
 }

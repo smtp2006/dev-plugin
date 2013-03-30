@@ -31,4 +31,17 @@
 		#{isLeaf}, #{isRelative}, #{level},
 		#{name}, #{parentId}, #{role}, #{status}, #{uri}, #{version})
 	</insert>
+
+	<select id="getTopMenusOfUser" parameterType="User">
+		SELECT * from T_SYSTEM_MENU
+		WHERE (
+		role = null or role ='' or role in
+		(
+		SELECT role from T_AUTH_USER_ROLE
+		WHERE
+		user_id = #{id}
+		)
+		)
+
+	</select>
 </mapper>
