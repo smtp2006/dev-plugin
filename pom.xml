@@ -1,56 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.smtp2006</groupId>
-	<artifactId>config</artifactId>
-	<packaging>war</packaging>
+	<groupId>com.github.smtp2006</groupId>
+	<artifactId>bean-validate-plugin</artifactId>
+	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>config Maven Webapp</name>
+	<name>Bean validate plugin</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>3.0.5.RELEASE</spring.version>
-		<struts2.version>2.3.1.1</struts2.version>
+		
 		<slf4j.version>1.6.4</slf4j.version>
 	</properties>
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<props>src/main/filters/dev.properties</props>
-				<projectName>ROOT</projectName>
-			</properties>
-		</profile>
-		<profile>
-			<id>qa</id>
-			<properties>
-				<props>src/main/filters/qa.properties</props>
-				<projectName>ROOT</projectName>
-			</properties>
-		</profile>
-		<profile>
-			<id>pre</id>
-			<properties>
-				<props>src/main/filters/pre.properties</props>
-				<projectName>ROOT</projectName>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<props>src/main/filters/prod.properties</props>
-				<projectName>ROOT</projectName>
-			</properties>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-		</profile>
-	</profiles>
+
 	<build>
-		<finalName>ROOT</finalName>
-		<filters>
-			<filter>${props}</filter>
-		</filters>
+		
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
