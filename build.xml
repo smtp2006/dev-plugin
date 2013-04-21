@@ -1,4 +1,4 @@
-<project name="config" basedir=".">
+<project name="config" basedir="." default="init_eclipse">
 
 	<target name="init_clean">
 		<exec executable="cmd" failonerror="true">
@@ -14,7 +14,7 @@
 
 	<target name="init_myeclipse">
 		<exec executable="cmd" failonerror="true">
-			<arg line="/k  mvn eclipse:myeclipse -DdownloadSources=true -DuseProjectReferences=false" />
+			<arg line="/k  mvn eclipse:myeclipse -DdownloadSources=true " />
 		</exec>
 	</target>
 
