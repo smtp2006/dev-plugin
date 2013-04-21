@@ -1,0 +1,14 @@
+<catalog>
+
+	<!-- Single command "chains" from CatalogBaseTestCase -->
+	<command name="AddingCommand" className="com.github.smtp2006.AddingCommand" />
+	<command name="DelegatingCommand" className="com.github.smtp2006.NonDelegatingCommand" />
+
+	<!-- Chains with nested commands -->
+	<chain name="Execute2a">
+		<command id="1" className="com.github.smtp2006.AddingCommand" />
+		<command id="2" className="com.github.smtp2006.AddingCommand" />
+		<command id="3" className="com.github.smtp2006.NonDelegatingCommand" />
+	</chain>
+
+</catalog>
