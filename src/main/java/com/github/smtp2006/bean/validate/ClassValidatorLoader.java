@@ -20,8 +20,16 @@ import org.slf4j.LoggerFactory;
 public class ClassValidatorLoader {
     // ------------------------------------------------------ Static Variables
     private static final Logger logger = LoggerFactory.getLogger(ClassValidatorLoader.class);
+    /**
+     * 
+     */
     public static final String CLASS_VALIDATOR_EXT = ".xml";
 
+    /**
+     * @param klass
+     * @return
+     * @throws IOException
+     */
     public Map<Class<?>, Map<String, ClassValidator<?>>> loadClassValidator(Class<?> klass) throws IOException {
         if (klass == null) {
             throw new IllegalArgumentException("klass must not be null");
@@ -52,6 +60,7 @@ public class ClassValidatorLoader {
     private Map<Class<?>, Map<String, ClassValidator<?>>> loadFromUrl(URL url) {
         logger.debug("try to load resouce: {}", url);
         Map<Class<?>, Map<String, ClassValidator<?>>> ret = new HashMap<Class<?>, Map<String, ClassValidator<?>>>();
+
         return ret;
     }
 }

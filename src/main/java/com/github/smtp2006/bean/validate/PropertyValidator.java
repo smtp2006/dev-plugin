@@ -20,6 +20,9 @@ public class PropertyValidator {
     private RuleChain ruleChain;
 
     // ------------------------------------------------------ Constructor
+    /**
+     * 
+     */
     public PropertyValidator() {
     }
 
@@ -64,6 +67,10 @@ public class PropertyValidator {
         this.ruleChain = ruleChain;
     }
 
+    /**
+     * @param value
+     * @return
+     */
     public List<Rule> validate(Object value) {
         return ruleChain.validate(value);
     }

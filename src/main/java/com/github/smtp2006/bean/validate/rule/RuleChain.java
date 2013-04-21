@@ -52,6 +52,9 @@ public class RuleChain {
         this.rules = rules;
     }
 
+    /**
+     * @param rule
+     */
     public void addRule(Rule rule) {
         if (this.rules == null) {
             this.rules = new ArrayList<Rule>();
@@ -60,6 +63,10 @@ public class RuleChain {
     }
 
     // Validate value
+    /**
+     * @param value
+     * @return
+     */
     public List<Rule> validate(Object value) {
         List<Rule> failures = null;
         if (rules != null && rules.size() > 0) {
