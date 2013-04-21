@@ -24,6 +24,7 @@ import com.github.smtp2006.bean.validate.rule.Rule;
  * 
  * @author wanghua
  * @version 2013-4-21 下午10:34:44
+ * @param <T>
  * 
  */
 public class ClassValidator<T> {
@@ -31,7 +32,7 @@ public class ClassValidator<T> {
     private static final Logger logger = LoggerFactory.getLogger(ClassValidator.class);
     // ------------------------------------------------------ Instance Variables
     private List<PropertyValidator> propertyValidators;
-
+    private String name = "default";
     //
 
     /**
@@ -93,6 +94,27 @@ public class ClassValidator<T> {
      */
     public void setPropertyValidators(List<PropertyValidator> propertyValidators) {
         this.propertyValidators = propertyValidators;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+    /**
+     * @return the name
+     */
+    public String getNameSpace() {
+        return this.getClass().getName() + "#" + name;
+    }
+
+    /**
+     * @param name
+     *            the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
 }
