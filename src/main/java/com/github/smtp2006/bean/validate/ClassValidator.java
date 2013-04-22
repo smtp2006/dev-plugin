@@ -7,6 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.xml.bind.annotation.XmlAccessOrder;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorOrder;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +35,17 @@ import com.github.smtp2006.bean.validate.rule.Rule;
  * @param <T>
  * 
  */
+@XmlRootElement
+@XmlAccessorOrder(value = XmlAccessOrder.ALPHABETICAL)
+@XmlAccessorType(value = XmlAccessType.PUBLIC_MEMBER)
 public class ClassValidator<T> {
     // ------------------------------------------------------ Static Variables
     private static final Logger logger = LoggerFactory.getLogger(ClassValidator.class);
+    public static final String DEFAULT_NAME = "default";
     // ------------------------------------------------------ Instance Variables
     private List<PropertyValidator> propertyValidators;
-    private String name = "default";
+    private String name = DEFAULT_NAME;
+
     //
 
     /**
@@ -72,6 +85,12 @@ public class ClassValidator<T> {
     }
 
     /**
+     */
+    public ClassValidator() {
+        super();
+    }
+
+    /**
      * @param propertyValidators
      */
     public ClassValidator(List<PropertyValidator> propertyValidators) {
@@ -99,12 +118,15 @@ public class ClassValidator<T> {
     /**
      * @return the name
      */
+    @XmlAttribute
     public String getName() {
         return name;
     }
+
     /**
      * @return the name
      */
+    @XmlTransient
     public String getNameSpace() {
         return this.getClass().getName() + "#" + name;
     }

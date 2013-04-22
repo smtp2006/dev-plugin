@@ -1,30 +1,26 @@
 package com.github.smtp2006;
 
-
 import org.apache.commons.chain.Chain;
 import org.apache.commons.chain.Command;
 import org.apache.commons.chain.Context;
 
-
-
 /**
- * <p>Implementation of {@link Command} that logs its identifier and
- * and attempts to add a new {@link Command} to the {@link Chain}.  This
- * should cause an IllegalStateException if the {@link Chain} implementation
- * subclasses <code>ChainBase</code>.</p>
- *
+ * <p>
+ * Implementation of {@link Command} that logs its identifier and and attempts to add a new {@link Command} to the
+ * {@link Chain}. This should cause an IllegalStateException if the {@link Chain} implementation subclasses
+ * <code>ChainBase</code>.
+ * </p>
+ * 
  * @author Craig R. McClanahan
  * @version $Revision: 480477 $ $Date: 2006-11-29 08:34:52 +0000 (Wed, 29 Nov 2006) $
  */
 
 public class AddingCommand extends NonDelegatingCommand {
 
-
     // ------------------------------------------------------------ Constructor
 
-
     public AddingCommand() {
-    this("", null);
+        this("", null);
     }
 
     // Construct an instance that will log the specified identifier
@@ -33,13 +29,10 @@ public class AddingCommand extends NonDelegatingCommand {
         this.parent = parent;
     }
 
-
     // The parent Chain
     private Chain parent = null;
 
-
     // -------------------------------------------------------- Command Methods
-
 
     // Execution method for this Command
     public boolean execute(Context context, Chain chain) throws Exception {
@@ -49,6 +42,5 @@ public class AddingCommand extends NonDelegatingCommand {
         return (true);
 
     }
-
 
 }
