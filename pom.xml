@@ -31,11 +31,6 @@
 			<version>1.8.3</version>
 		</dependency>
 		<!-- commons-chain -->
-		<dependency>
-			<groupId>commons-chain</groupId>
-			<artifactId>commons-chain</artifactId>
-			<version>1.2</version>
-		</dependency>
 		<!-- commons-logging -->
 		<dependency>
 			<groupId>commons-logging</groupId>
