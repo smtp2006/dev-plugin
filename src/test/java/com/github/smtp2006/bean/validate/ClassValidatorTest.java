@@ -3,9 +3,15 @@
  */
 package com.github.smtp2006.bean.validate;
 
+import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,10 +27,18 @@ import com.github.smtp2006.bean.validate.rule.impl.NotNullRule;
  */
 public class ClassValidatorTest {
     @Test
-    public void testValidate() {
+    public void testValidate() throws IOException, JAXBException {
         ClassValidator<User> cv = init_ClassValidator();
-        User user = new User();
+        JAXBContext context = JAXBContext.newInstance(ClassValidator.class, NotNullRule.class);
+        try {
+            Marshaller marshal = context.createMarshaller();
+            marshal.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            marshal.marshal(cv, System.out);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+        User user = new User();
         // user.name is null, validate failure
         Map<String, List<Rule>> failures = cv.validate(user);
 
@@ -36,6 +50,8 @@ public class ClassValidatorTest {
         failures = cv.validate(user);
         Assert.assertNull(failures);
         result_Post(failures);
+
+        System.out.println(ClassValidatorFactory.validate(user));
     }
 
     private ClassValidator<User> init_ClassValidator() {
@@ -61,7 +77,7 @@ public class ClassValidatorTest {
             System.out.println(entry.getKey() + " ==>");
 
             for (Rule rule : entry.getValue()) {
-                System.out.print("\t" + rule.format() + ";");
+                System.out.print("\t" + new MessageFormat(rule.format()).format(new Object[] { "name" }) + ";");
             }
             System.out.println();
         }

@@ -6,6 +6,9 @@ package com.github.smtp2006.bean.validate.rule;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAnyElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,6 +43,7 @@ public class RuleChain {
     /**
      * @return the rules
      */
+    @XmlAnyElement
     public List<Rule> getRules() {
         return rules;
     }

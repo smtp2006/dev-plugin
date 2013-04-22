@@ -29,4 +29,11 @@ public interface Rule {
      * @return
      */
     String format();
+
+    /**
+     * 
+     * @version 2013-4-22 下午11:30:54
+     * @return
+     */
+    String getClassName();
 }
