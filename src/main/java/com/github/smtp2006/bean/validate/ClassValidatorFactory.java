@@ -29,8 +29,13 @@ public class ClassValidatorFactory {
     private static Map<Class<?>, Map<String, ClassValidator<?>>> classValidatorCache = new HashMap<Class<?>, Map<String, ClassValidator<?>>>();
     private static Map<String, MessageFormat> messageFormatCache = new ConcurrentHashMap<String, MessageFormat>();
 
+    /**
+     * @param obj
+     * @return
+     * @throws IOException
+     */
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public static Map<String, String> validate(Object obj) throws IOException {
+    public static Map<String, String> validate(Object obj) throws Exception {
         assertNotNull(obj);
 
         Map<String, String> ret = null;
