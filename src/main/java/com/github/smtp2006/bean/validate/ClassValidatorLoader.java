@@ -9,9 +9,6 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.dom4j.Document;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -87,14 +84,7 @@ public class ClassValidatorLoader {
     private Map<String, ClassValidator<?>> loadFromUrl(URL url) throws Exception {
         logger.debug("try to load resouce: {}", url);
         Map<String, ClassValidator<?>> ret = new HashMap<String, ClassValidator<?>>();
-
-        SAXReader reader = new SAXReader();
-        Document document = reader.read(url);
-        Element classValidators = document.getRootElement();
-        if ("classValidators".equals(classValidators.getName())) {
-        } else {
-            throw new RuntimeException("RootElement must be : classValidators");
-        }
+       
         return ret;
     }
 }
