@@ -10,14 +10,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.xml.bind.JAXBException;
 
 import org.apache.commons.digester3.Digester;
+import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.smtp2006.bean.validate.digester.SingletonObjectCreateRule;
 import com.github.smtp2006.bean.validate.rule.Rule;
 import com.github.smtp2006.bean.validate.rule.RuleChain;
 import com.github.smtp2006.bean.validate.rule.impl.NotNullRule;
@@ -30,6 +33,7 @@ import com.github.smtp2006.bean.validate.rule.impl.NotNullRule;
 public class ClassValidatorTest {
     // ------------------------------------------------------ Static Variables
     private static final Logger logger = LoggerFactory.getLogger(ClassValidator.class);
+    private static final Map<Class, Rule> rulesCache = new ConcurrentHashMap<Class, Rule>();
 
     /**
      * @throws IOException
@@ -38,47 +42,55 @@ public class ClassValidatorTest {
     @Test
     public void testValidate() throws Exception {
         Digester digester = new Digester();
-        digester.setValidating(false);
+        // digester.setValidating(true);
+        // push Map
         digester.push(new HashMap<String, ClassValidator>());
-
+        // parse ClassValidator
         digester.addCallMethod("classValidator", "put", 2);
         digester.addCallParam("classValidator", 0, "name");
 
         digester.addObjectCreate("classValidator", ClassValidator.class);
         digester.addSetProperties("classValidator");
 
+        // parse ClassValidator.List#propertyValidators
         digester.addObjectCreate("classValidator/propertyValidators", ArrayList.class);
 
-        // digester.addObjectCreate("classValidator/propertyValidators/propertyValidator", PropertyValidator.class);
-        // digester.addCallMethod("classValidator/propertyValidators/propertyValidator/property", "setProperty", 0);
-        //
-        // digester.addCallMethod("classValidator/propertyValidators/propertyValidator", "add", 1,
-        // new Class[] { PropertyValidator.class });
-        // digester.addCallParam("classValidator/propertyValidators/propertyValidator", 0, true);
+        // parse ClassValidator.List#propertyValidators.propertyValidator
+        digester.addObjectCreate("classValidator/propertyValidators/propertyValidator", PropertyValidator.class);
+        digester.addCallMethod("classValidator/propertyValidators/propertyValidator/property", "setProperty", 0);
+        
+        digester.addObjectCreate("classValidator/propertyValidators/propertyValidator/ruleChain", RuleChain.class);
+        
+//        digester.addObjectCreate("classValidator/propertyValidators/propertyValidator/ruleChain/rules/rule", null, "class");
+        digester.addRule( "classValidator/propertyValidators/propertyValidator/ruleChain/rules/rule", new SingletonObjectCreateRule(  ) );
+        digester.addSetNext("classValidator/propertyValidators/propertyValidator/ruleChain/rules/rule", "addRule");
+        digester.addSetNext("classValidator/propertyValidators/propertyValidator/ruleChain", "setRuleChain");
 
-        digester.addCallMethod("classValidator/propertyValidators", "setPropertyValidators", 1,
-                new Class[] { List.class });
-        digester.addCallParam("classValidator/propertyValidators", 0, true);
+        digester.addSetNext("classValidator/propertyValidators/propertyValidator", "add");
+
+        // parse ClassValidator.setPropertyValidators
+        digester.addSetNext("classValidator/propertyValidators", "setPropertyValidators", List.class.getName());
 
         digester.addCallParam("classValidator", 1, true);
         URL url = ClassValidatorTest.class.getClassLoader().getResource("User.xml");
+//        URL url = ClassValidatorTest.class.getClassLoader().getResource(User.class.getName().replace(".", "/")+".xml");
         Object foo = digester.parse(url);
         System.out.println(foo);
-        // ClassValidator<User> cv = init_ClassValidator();
-        // User user = new User();
-        // // user.name is null, validate failure
-        // Map<String, List<Rule>> failures = cv.validate(user);
-        //
-        // Assert.assertNotNull(failures);
-        // result_Post(failures);
-        //
-        // // user.name is not null, validate success;
-        // user.setName("hello");
-        // failures = cv.validate(user);
-        // Assert.assertNull(failures);
-        // result_Post(failures);
-        //
-        // System.out.println(ClassValidatorFactory.validate(user));
+         ClassValidator<User> cv = init_ClassValidator();
+         User user = new User();
+         // user.name is null, validate failure
+         Map<String, List<Rule>> failures = cv.validate(user);
+        
+         Assert.assertNotNull(failures);
+         result_Post(failures);
+        
+         // user.name is not null, validate success;
+         user.setName("hello");
+         failures = cv.validate(user);
+         Assert.assertNull(failures);
+         result_Post(failures);
+        
+         System.out.println(ClassValidatorFactory.validate(user));
     }
 
     private ClassValidator<User> init_ClassValidator() {
