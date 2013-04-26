@@ -3,7 +3,6 @@
  */
 package com.github.smtp2006.bean.validate;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -23,38 +22,21 @@ import com.github.smtp2006.bean.validate.rule.RuleChain;
  * @version 2013-4-22 上午12:35:08
  * 
  */
-public class ClassValidatorLoader {
+class ClassValidatorLoader {
     // ------------------------------------------------------ Static Variables
+    /**
+     * logger.
+     */
     private static final Logger logger = LoggerFactory.getLogger(ClassValidatorLoader.class);
     /**
-     * 
+     * Java Bean Class扩展名.
      */
     public static final String CLASS_VALIDATOR_EXT = ".xml";
 
     /**
-     * @param klass
-     * @return
-     * @throws IOException
-     */
-    /**
-     * @param klass
-     * @return
-     * @throws IOException
-     */
-    /**
-     * @param klass
-     * @return
-     * @throws IOException
-     */
-    /**
-     * @param klass
-     * @return
-     * @throws IOException
-     */
-    /**
-     * @param klass
-     * @return
-     * @throws IOException
+     * @param klass 要加载的Class
+     * @return 加载Class.xml为Map，key=ClassValidator#name, value=ClassValidator.
+     * @throws Exception Digester解析异常
      */
     public synchronized Map<String, ClassValidator<?>> loadClassValidator(Class<?> klass) throws Exception {
         if (klass == null) {
@@ -89,7 +71,13 @@ public class ClassValidatorLoader {
         }
         return ret;
     }
-
+    /**
+     * 
+     * @version 2013-4-27 下午11:17:21
+     * @param url Class.xml的URL
+     * @return 加载URL指定的文件
+     * @throws Exception Digester异常
+     */
     @SuppressWarnings({ "rawtypes", "unchecked" })
     private Map<String, ClassValidator<?>> loadFromUrl(URL url) throws Exception {
         logger.debug("try to load resouce: {}", url);
