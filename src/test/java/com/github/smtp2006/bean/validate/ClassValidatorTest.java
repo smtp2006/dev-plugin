@@ -91,6 +91,7 @@ public class ClassValidatorTest {
          result_Post(failures);
         
          System.out.println(ClassValidatorFactory.validate(user));
+         System.out.println("logger".matches("^logger$"));
     }
 
     private ClassValidator<User> init_ClassValidator() {

@@ -27,6 +27,9 @@ import com.github.smtp2006.bean.validate.rule.Rule;
  */
 public class ClassValidator<T> {
     // ------------------------------------------------------ Static Variables
+	/**
+	 * log class
+	 */
     private static final Logger logger = LoggerFactory.getLogger(ClassValidator.class);
     /**
      * ClassValidator的默认命名空间.
