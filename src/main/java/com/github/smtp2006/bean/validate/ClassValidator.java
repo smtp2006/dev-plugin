@@ -27,9 +27,9 @@ import com.github.smtp2006.bean.validate.rule.Rule;
  */
 public class ClassValidator<T> {
     // ------------------------------------------------------ Static Variables
-	/**
-	 * log class
-	 */
+    /**
+     * log class.
+     */
     private static final Logger logger = LoggerFactory.getLogger(ClassValidator.class);
     /**
      * ClassValidator的默认命名空间.
@@ -51,7 +51,7 @@ public class ClassValidator<T> {
      * @param value 被校验对象
      * @return 返回校验失败的字段以及字段对应校验失败的规则
      */
-    public Map<String, List<Rule>> validate(T value) {
+    public final Map<String, List<Rule>> validate(T value) {
         Map<String, List<Rule>> failures = null;
         if (propertyValidators != null) {
             for (PropertyValidator proValidator : propertyValidators) {
@@ -60,9 +60,10 @@ public class ClassValidator<T> {
                     proValue = BeanUtils.getProperty(value, proValidator.getProperty());
                 } catch (Exception e) {
                     if (logger.isDebugEnabled()) {
-                        logger.debug( "getProperty(" + proValidator.getProperty() + ") failure", e);
+                        logger.debug("getProperty(" + proValidator.getProperty() + ") failure", e);
                     } else {
-                        logger.warn("getProperty(" + proValidator.getProperty() + ") failure with exception :" + e.getMessage());
+                        logger.warn("getProperty(" + proValidator.getProperty()
+                                + ") failure with exception :" + e.getMessage());
                     }
                     // if no getter, continue
                     continue;
@@ -88,7 +89,7 @@ public class ClassValidator<T> {
     }
 
     /**
-     * @param propertyValidators
+     * @param propertyValidators 指定哪些属性需要校验.
      */
     public ClassValidator(List<PropertyValidator> propertyValidators) {
         super();

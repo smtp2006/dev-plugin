@@ -60,7 +60,7 @@ public class RuleChain {
     }
 
     /**
-     * @param rule
+     * @param rule Rule
      */
     public void addRule(Rule rule) {
         if (this.rules == null) {

@@ -16,19 +16,25 @@ import com.github.smtp2006.bean.validate.rule.RuleChain;
 public class PropertyValidator {
 
     // ------------------------------------------------------ Instance Variables
+    /**
+     * 被校验的属性.
+     */
     private String property;
+    /**
+     * 需要校验的规则.
+     */
     private RuleChain ruleChain;
 
     // ------------------------------------------------------ Constructor
     /**
-     * 
+     * 默认构造函数.
      */
     public PropertyValidator() {
     }
 
     /**
-     * @param property
-     * @param ruleChain
+     * @param property 被校验的属性
+     * @param ruleChain 需要校验的规则
      */
     public PropertyValidator(String property, RuleChain ruleChain) {
         super();
@@ -68,8 +74,8 @@ public class PropertyValidator {
     }
 
     /**
-     * @param value
-     * @return
+     * @param value 属性值
+     * @return 校验失败的规则
      */
     public List<Rule> validate(Object value) {
         return ruleChain.validate(value);

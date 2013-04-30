@@ -9,11 +9,11 @@ import org.slf4j.Logger;
  * @author hua.wanghuawh
  * 
  */
-public class Slf4jLoggerUtil {
+public abstract class Slf4jLoggerUtil {
     /**
-     * @param logger
-     * @param msg
-     * @param e
+     * @param logger logger
+     * @param msg msg
+     * @param e exception
      */
     public static void exception(Logger logger, String msg, Exception e) {
         if (logger.isDebugEnabled()) {

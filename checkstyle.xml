@@ -47,7 +47,7 @@
 
     <!-- Checks whether files end with a new line.                        -->
     <!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile -->
-	<module name="NewlineAtEndOfFile" />
+	<!-- <module name="NewlineAtEndOfFile" /> -->
 
     <!-- Checks that property files contain the same keys.         -->
     <!-- See http://checkstyle.sf.net/config_misc.html#Translation -->
@@ -85,7 +85,7 @@
         <!-- See http://checkstyle.sf.net/config_naming.html -->
 		<module name="ConstantName">
 			<!-- @ -->
-			<property name="format" value="^logger[A-Z0-9]*$" />
+			<property name="format" value="(logger)?[A-Z_0-9]*$" />
 		</module>
 		<module name="LocalFinalVariableName" />
 		<module name="LocalVariableName" />
@@ -163,7 +163,7 @@
 		<module name="AvoidInlineConditionals" />
 		<module name="EmptyStatement" />
 		<module name="EqualsHashCode" />
-		<module name="HiddenField" />
+		<!-- <module name="HiddenField" /> -->
 		<module name="IllegalInstantiation" />
 		<module name="InnerAssignment" />
 		<module name="MagicNumber" />
@@ -174,7 +174,7 @@
 
         <!-- Checks for class design                         -->
         <!-- See http://checkstyle.sf.net/config_design.html -->
-		<module name="DesignForExtension" />
+		<!-- <module name="DesignForExtension" /> -->
 		<module name="FinalClass" />
 		<module name="HideUtilityClassConstructor" />
 		<module name="InterfaceIsType" />
@@ -184,7 +184,7 @@
         <!-- Miscellaneous other checks.                   -->
         <!-- See http://checkstyle.sf.net/config_misc.html -->
 		<module name="ArrayTypeStyle" />
-		<module name="FinalParameters" />
+		<!-- <module name="FinalParameters" /> -->
 		<module name="TodoComment" />
 		<module name="UpperEll" />
 

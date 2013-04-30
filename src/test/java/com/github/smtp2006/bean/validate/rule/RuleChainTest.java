@@ -52,10 +52,12 @@ public class RuleChainTest {
     @Test
     public void validate() {
         RuleChain rc = new RuleChain();
-
+        List<Rule> ruleFailures = rc.validate(null);
+        assertNull(ruleFailures);
+        
         rc.addRule(new NotNullRule());
 
-        List<Rule> ruleFailures = rc.validate(null);
+         ruleFailures = rc.validate(null);
         assertNotNull(ruleFailures);
 
         assertTrue(ruleFailures.size() == 1);
