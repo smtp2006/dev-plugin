@@ -8,7 +8,7 @@ package github.smtp2006.utils.config;
  * @version 2013年10月29日 下午5:55:42
  * 
  */
-public class TestConfigBean {
+public class ConfigTestBean {
     private String host;
     private String port;
     public String getHost() {

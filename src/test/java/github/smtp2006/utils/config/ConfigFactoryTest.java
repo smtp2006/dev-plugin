@@ -6,7 +6,7 @@ import org.junit.Test;
 public class ConfigFactoryTest {
     @Test
     public void testGetConfig() throws Exception {
-        TestConfigBean config = (TestConfigBean) ConfigFactory.getConfig(TestConfigBean.class.getName());
+        ConfigTestBean config = (ConfigTestBean) ConfigFactory.getConfig(ConfigTestBean.class.getName());
         Assert.assertNotNull(config);
         System.out.println(config);
     }
