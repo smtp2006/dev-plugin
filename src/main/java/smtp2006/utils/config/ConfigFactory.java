@@ -1,11 +1,11 @@
-package github.smtp2006.utils.config;
-
-import github.smtp2006.utils.BeanUtil;
+package smtp2006.utils.config;
 
 import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import smtp2006.commons.BeanUtil;
 
 /**
  * 配置的工厂，通过该类的方法，加载配置，并返回指定类型的Java对象.

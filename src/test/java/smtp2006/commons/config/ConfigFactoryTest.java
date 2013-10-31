@@ -1,7 +1,9 @@
-package github.smtp2006.utils.config;
+package smtp2006.commons.config;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import smtp2006.utils.config.ConfigFactory;
 
 public class ConfigFactoryTest {
     @Test

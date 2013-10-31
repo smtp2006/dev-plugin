@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2013.
  */
-package github.smtp2006.utils;
+package smtp2006.commons;
 
 /**
  * @author 王华

@@ -1,12 +1,14 @@
 /**
  * Copyright (c) 2013.
  */
-package github.smtp2006.utils;
+package smtp2006.commons;
 
 import java.util.Properties;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import smtp2006.commons.BeanUtil;
 
 /**
  * @author 王华

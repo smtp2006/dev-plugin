@@ -1,4 +1,4 @@
-<project name="hub-utils" basedir="." default="init_eclipse">
+<project name="hub-commons" basedir="." default="init_eclipse">
 
 	<target name="init_clean">
 		<exec executable="cmd" failonerror="true">
