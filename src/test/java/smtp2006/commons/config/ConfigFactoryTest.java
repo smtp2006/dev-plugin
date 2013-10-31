@@ -3,7 +3,7 @@ package smtp2006.commons.config;
 import org.junit.Assert;
 import org.junit.Test;
 
-import smtp2006.utils.config.ConfigFactory;
+import smtp2006.commons.config.ConfigFactory;
 
 public class ConfigFactoryTest {
     @Test

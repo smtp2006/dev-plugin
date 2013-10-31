@@ -1,4 +1,4 @@
-package smtp2006.utils.config;
+package smtp2006.commons.config;
 
 import java.util.Properties;
 

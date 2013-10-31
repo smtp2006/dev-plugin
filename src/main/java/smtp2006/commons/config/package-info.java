@@ -6,4 +6,4 @@
  * @version 2013年10月29日 下午5:12:36
  *
  */
-package smtp2006.utils.config;
+package smtp2006.commons.config;
