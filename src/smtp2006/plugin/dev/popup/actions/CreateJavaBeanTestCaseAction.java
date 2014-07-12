@@ -23,7 +23,7 @@ public class CreateJavaBeanTestCaseAction
         String beanName = config.getName().replace( ".java", "" );
         writeln( fw, "\t\t" + beanName + " target = new " + beanName + "();" );
         ClassMeta meta = ClassMetaUtil.parse( content );
-        for ( String field : meta.getMethods() )
+        for ( String field : meta.getFields() )
         {
             writeln( fw, "\t\t" + "target.set" + Character.toUpperCase( field.charAt( 0 ) ) + field.substring( 1 )
                 + "(null);" );
