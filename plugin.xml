@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="dev-plugin.javacontribution"
+            objectClass="org.eclipse.jdt.core.IJavaElement">
+         <menu
+               id="dev-plugin.menu"
+               label="Dev Plugin"
+               path="additions">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+         <action
+               class="smtp2006.plugin.dev.popup.actions.CreateTestCaseAction"
+               enablesFor="1"
+               id="dev-plugin.CreateTestCaseAction"
+               label="Create TestCase"
+               menubarPath="dev-plugin.menu/group">
+         </action>
+         <action
+               class="smtp2006.plugin.dev.popup.actions.CreateJavaBeanTestCaseAction"
+               enablesFor="1"
+               id="dev-plugin.CreateJavaBeanTestCaseAction"
+               label="Create JavaBean TestCase"
+               menubarPath="dev-plugin.menu/group">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
