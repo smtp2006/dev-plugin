@@ -21,7 +21,7 @@ public class CreateJavaBeanTestCaseAction
         writeln( fw, "\tpublic void invoke_GetterAndSetter()" );
         writeln( fw, "\t{" );
         String beanName = config.getName().replace( ".java", "" );
-        writeln( fw, "\t\t" + beanName + " target = new " + beanName + "()" );
+        writeln( fw, "\t\t" + beanName + " target = new " + beanName + "();" );
         ClassMeta meta = ClassMetaUtil.parse( content );
         for ( String field : meta.getMethods() )
         {
