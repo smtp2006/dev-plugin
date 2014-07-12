@@ -62,7 +62,7 @@ public class CreateTestCaseAction
     protected void createFile( ClassConfig config )
     {
         String dir =
-            config.getWorkspace() + "/" + config.getProject() + "/" + config.getSrc().replaceFirst( "src", "test" )
+            config.getWorkspace() + config.getSrc().replaceFirst( "src", "test" )
                 + "/" + config.getPkg().replace( ".", "/" );
         String name = config.getName().replace( ".java", "Test.java" );
         String className = config.getPkg() + "." + config.getName().replace( ".java", "" );

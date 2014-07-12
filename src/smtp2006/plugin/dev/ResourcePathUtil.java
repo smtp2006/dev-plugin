@@ -30,7 +30,7 @@ public class ResourcePathUtil
                 comUnit.getClassFile();
                 config.setPkg( comUnit.getPackageDeclarations()[0].getElementName() );
                 config.setProject( comUnit.getJavaProject().getElementName() );
-                config.setSrc( comUnit.getPackageFragmentRoot().getElementName() );
+                config.setSrc( comUnit.getPackageFragmentRoot().getResource().getFullPath().toString() );
                 config.setTarget( comUnit.getJavaProject().getOutputLocation().toString() );
                 config.setWorkspace( comUnit.getJavaProject().getProject().getWorkspace().getRoot().getLocation().toString() );
                 IImportDeclaration[] importDecs = comUnit.getImports();
