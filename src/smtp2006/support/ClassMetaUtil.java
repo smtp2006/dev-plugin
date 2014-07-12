@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2014.
  */
-package smtp2006.plugin.dev;
+package smtp2006.support;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -12,8 +12,12 @@ import java.util.List;
  * @Date 2014年7月12日 下午3:00:35
  * @Class ClassContentUtil.java
  */
-public abstract class ClassContentUtil
+public abstract class ClassMetaUtil
 {
+    private static FieldParser fieldParser = new FieldParser();
+
+    private static MethodParser methodParser = new MethodParser();
+
     public static ClassMeta parse( String content )
     {
         ClassMeta meta = new ClassMeta();
@@ -37,6 +41,18 @@ public abstract class ClassContentUtil
 
     private static void parseLine( ClassMeta meta, String line )
     {
+        String target = fieldParser.invoke( line );
+        if ( target != null )
+        {
+            meta.addField( target );
+            return;
+        }
+        target = methodParser.invoke( line );
+        if ( target != null )
+        {
+            meta.addMethod( target );
+            return;
+        }
     }
 
     public static class ClassMeta
