@@ -5,21 +5,21 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             id="dev-plugin.contribution1"
-            objectClass="org.eclipse.core.resources.IFile">
+            objectClass="org.eclipse.jdt.core.IJavaElement">
          <menu
-               id="dev-plugin.menu1"
-               label="Dev menu"
+               id="dev-plugin.menus.dev"
+               label="Dev Tools"
                path="additions">
             <separator
                   name="group1">
             </separator>
          </menu>
          <action
-               class="kg.eclipse.popup.actions.DevAction"
+               class="kg.eclipse.popup.actions.CreateJavaBeanTestAction"
                enablesFor="1"
-               id="dev-plugin.newAction"
-               label="Dev menu"
-               menubarPath="dev-plugin.menu1/group1">
+               id="dev-plugin.menus.dev.CreateJavaBeanTestAction"
+               label="CreateJavaBeanTest"
+               menubarPath="dev-plugin.menus.dev/group1">
          </action>
       </objectContribution>
    </extension>
