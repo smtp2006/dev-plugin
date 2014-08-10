@@ -1,28 +1,33 @@
 /**
  * 
  */
-package kg.eclipse.util;
+package kg.eclipse.support.java;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.TreeSet;
 
 /**
  * @author whua smtp2006@126.com
  * @version 2014年8月10日上午11:33:47
  */
-public class JavaInfo {
+public class JavaInfo
+{
+    private ProjectInfo projectInfo;
+
     /**
      * 包名.
      */
     private String packageName;
+
     /**
      * 类名.
      */
     private String className;
+
     /**
      * 所有字段列表.
      */
-    private Collection<String> fields = new TreeSet<String>();
+    private Collection<FieldInfo> fields = new ArrayList<FieldInfo>();
 
     /**
      * Getter & Setter.
@@ -33,7 +38,8 @@ public class JavaInfo {
      * 
      * @return 返回包名
      */
-    public String getPackageName() {
+    public String getPackageName()
+    {
         return packageName;
     }
 
@@ -42,7 +48,8 @@ public class JavaInfo {
      * 
      * @param packageName 包名
      */
-    public void setPackageName(String packageName) {
+    public void setPackageName( String packageName )
+    {
         this.packageName = packageName;
     }
 
@@ -51,7 +58,8 @@ public class JavaInfo {
      * 
      * @return 返回类名
      */
-    public String getClassName() {
+    public String getClassName()
+    {
         return className;
     }
 
@@ -60,7 +68,8 @@ public class JavaInfo {
      * 
      * @param className 类名
      */
-    public void setClassName(String className) {
+    public void setClassName( String className )
+    {
         this.className = className;
     }
 
@@ -69,7 +78,8 @@ public class JavaInfo {
      * 
      * @return 返回字段列表
      */
-    public Collection<String> getFields() {
+    public Collection<FieldInfo> getFields()
+    {
         return fields;
     }
 
@@ -78,8 +88,25 @@ public class JavaInfo {
      * 
      * @param field 字段
      */
-    public void addField(String field) {
-        this.fields.add(field);
+    public void addField( String field, String type )
+    {
+        this.fields.add( new FieldInfo( field, type ) );
+    }
+
+    /**
+     * @return the projectInfo
+     */
+    public final ProjectInfo getProjectInfo()
+    {
+        return projectInfo;
+    }
+
+    /**
+     * @param projectInfo the projectInfo to set
+     */
+    public final void setProjectInfo( ProjectInfo projectInfo )
+    {
+        this.projectInfo = projectInfo;
     }
 
 }
