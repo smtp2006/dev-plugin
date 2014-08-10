@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: dev-plugin
+Bundle-SymbolicName: dev-plugin;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Export-Package: kg.eclipse
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.resources

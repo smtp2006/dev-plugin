@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="dev-plugin.contribution1"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="dev-plugin.menu1"
+               label="Dev menu"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="kg.eclipse.popup.actions.DevAction"
+               enablesFor="1"
+               id="dev-plugin.newAction"
+               label="Dev menu"
+               menubarPath="dev-plugin.menu1/group1">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
